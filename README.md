@@ -2,79 +2,217 @@
   <img src="assets/reprograma-fundos-claros.png" alt="logo reprograma" width="500">
 </h1>
 
-# Tema da Aula
+# Projeto Guiado III
 
-Turma Online 22 - B3 | Back-end | Semana X | 2023 | Professora X
+Turma Online
+ 22 - B3 | Back-end | Semana 13 | 2023 | Professora Gaia Maria
 
-### Instruções
-Antes de começar, vamos organizar nosso setup.
-* Fork esse repositório 
-* Clone o fork na sua máquina (Para isso basta abrir o seu terminal e digitar `git clone url-do-seu-repositorio-forkado`)
-* Entre na pasta do seu repositório (Para isso basta abrir o seu terminal e digitar `cd nome-do-seu-repositorio-forkado`)
-* [Add outras intrucoes caso necessario]
+##   Apresentação
 
-### Resumo
-O que veremos na aula de hoje?
-* [Tema1](#tema1)
-* [Tema2](#tema2)
-* [Tema3](#tema3)
+ Olá, meu nome é Gaia Maria. Sou uma travesti graduada em História Licenciatura (UNESP) e graduanda em Análise e Desenvolvimento de Sistemas (Faculdade Descomplica). Sou uma Bruxa devota a Hecate, ocultista e pagã. Tambem sou uma pessoa neurodiversa, gamer, viciada em RPG e desenvolvedora.
 
-## Conteúdo
-### Tema1 
-1. [Tópico 1](#topico1)
-2. [Tópico 2](#topico2)
-### Tema2 
-1. [Tópico 3](#topico3)
-   * [Subtópico 1](#subtopico1)
-   * [Subtópico 2](#subtopico2)
-   
-### Tema3
-1. [Tópico 4](#topico4)
+###  👩🏽‍🏫 recadinhos 
+    - Bebam água meninas
+    - Qualquer pergunta é válida, principalmente aquela que a gente pensa que não faz sentido.
+    - Deixe a camera ligada
+    
+### 📑 Conteúdo da Aula
 
-### Tema1 
+    - Revisão
+    - Projeto Guiado
+## 🛠️Tecnologias utilizadas:
 
-#### Topico1
+| Ferramenta | Descrição |
+| --- | --- |
+| `javascript` | Linguagem de programação |
+| `nodejs` | Ambiente de execução do javascript|
+| `express` | Framework NodeJS |
+| `dotenv` | Dependência para proteger dados sensíveis do projeto|
+| `mongoose` | Dependência que interage com o MongoDB para a conexão da database, criação do model e das collections|
+| `nodemon` | Dependência que observa as atualizações realizadas nos documentos para rodar o servidor automaticamente|
+| `npm ou yarn` | Gerenciador de pacotes|
+| `MongoDb` | Banco de dado não relacional orietado a documentos|
+| `MongoDb Compass ou Mongo Atlas` | Interface gráfica para verificar se os dados foram persistidos|
+ `Thunder Client ou Postman` | Interface gráfica para realizar os testes|
+ <br>
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam leo nibh, tempus sed rhoncus et, ultrices vitae orci. Donec erat mauris, laoreet in tortor vel, eleifend suscipit nibh. Mauris pharetra dui quis turpis rutrum blandit. Nunc tempor libero tortor, ac commodo erat porttitor ut. Donec vitae orci arcu. Nunc felis mi, maximus a turpis a, mollis pulvinar enim. Vivamus aliquam ante dui, a blandit massa rutrum et. Etiam hendrerit gravida ultrices. Nunc ante massa, dictum eget justo eget, feugiat tincidunt metus.
+ ## 🗂️ Arquitetura  
+ ````  
+   📁 fliperama-DB  
+   |  
+   |-  📁 src    
+   |    |
+   |    |- 📁 database  
+   |         |- 📄 dbConnect.js  
+   |
+   |    |- 📁 controllers  
+   |         |- 📄 consolesController.js  
+   |         |- 📄 gamesController.js  
+   |  
+   |    |- 📁 models  
+   |         |- 📄 consolesModel.js  
+   |         |- 📄 gamesModel.js  
+   |  
+   |    |- 📁 routes  
+   |         |- 📄 consolesRoutes.js   
+   |         |- 📄 gamesRoutes.js     
+   |    |- 📄 app.js
+   |
+   |- 📄 .env
+   |- 📄 .env.example
+   |- 📄 .gitignore  
+   |- 📄 package-lock.json  
+   |- 📄 pakage.json  
+   |- 📄 README.md  
+   |- 📄 server.js  
+````
 
- #### Topico2
-  - Lorem ipsum dolor sit amet, consectetur adipiscing elit.
-  - Donec erat mauris, laoreet in tortor vel
-  - Nunc ante massa, dictum eget justo eget, feugiat tincidunt.
+<br>
 
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam leo nibh, tempus sed rhoncus et, ultrices vitae orci. Donec erat mauris, laoreet in tortor vel, eleifend suscipit nibh. Mauris pharetra dui quis turpis rutrum blandit.
+## 🌐Dados para Collection Consoles
 
-### Tema2
-#### Topico3
-* [Subtópico 1](#subtopico1)
-* [Subtópico 2](#Subtopico2)
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam leo nibh, tempus sed rhoncus et, ultrices vitae orci. Donec erat mauris, laoreet in tortor vel.
+- **_id**: autogerado e obrigatório
+- **name**: texto e obrigatório (*unico*)
+- **developer**: texto e obrigatorio
+- **releaseData**: number e obrigatorio
+- **display**: array, texto e obrigatorio
+- **storageCapacities**: array, texto e obrigatorio
+- **numberOfPlayers**: array numerico e obrigatorio
+- **available**: boolean e obrigatorio
+- **description**: texto e opcional
+  
+ <br>
 
-##### Subtopico1
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam leo nibh, tempus sed rhoncus et, ultrices vitae orci. Donec erat mauris, laoreet in tortor vel.
+### 🖨️ API deve retornar seguinte JSON:
+```javascript
+[
+  {
+    "_id":new ObjectId("62b0c3860a5912f473d73c0f"),
+    "name":"PlayStation 4",
+    "developer":"Sony Computer Entertainment",
+    "releaseData":{"2013"},
+    "display":["480p","720p","1080p","4K"],
+    "storageCapacities":["500GB","1TB","2TB"],
+    "numberOfPlayers":[{"1","2","3","4"}],
+    "available":true,
+    "description":"The PlayStation 4 (PS4) is a home video game console developed by Sony Computer..."
+     __v: 0
+},
+{
+    "_id":new ObjectId("62b0c4860a5912f473d73c11"),
+    "name":"Xbox One",
+    "developer":"Microsoft",
+    "releaseData":{"2013"},
+    "display":["720p","1080p","1440p","4K"],
+    "storageCapacities":["500GB","1TB"],
+    "numberOfPlayers":["1","2","3","4"],
+    "available":true,
+    "description":"The Xbox One is a home video game console developed by Microsoft..."
+     __v: 0
+},
+{
+    "_id":new ObjectId("62b0c6110a5912f473d73c13"),
+    "name":"Nintendo Switch",
+    "developer":"Nintendo PTD",
+    "releaseData":{"2017"},
+    "display":["480p","720p","1080p"],
+    "storageCapacities":["34GB","64TB"],
+    "numberOfPlayers":["1","2"],
+    "available":false,
+    "description":"The Nintendo Switch is a video game console developed by Nintendo..."
+     __v: 0
+  }
+]
+```
+<br>
+<br>
 
-##### Subtopico2
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam leo nibh, tempus sed rhoncus et, ultrices vitae orci. Donec erat mauris, laoreet in tortor vel.
 
-### Tema3
-#### Topico4
-Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam leo nibh, tempus sed rhoncus et, ultrices vitae orci. Donec erat mauris, laoreet in tortor vel, eleifend suscipit nibh. Mauris pharetra dui quis turpis rutrum blandit. Nunc tempor libero tortor, ac commodo erat porttitor ut. Donec vitae orci arcu. Nunc felis mi, maximus a turpis a, mollis pulvinar enim. Vivamus aliquam ante dui, a blandit massa rutrum et. Etiam hendrerit gravida ultrices.
+## 🌐 Dados para Collection Games
+- **_id**: autogerado e obrigatório
+- **name**: texto e obrigatório (*unico*)
+- **developer**: texto e obrigatorio
+- **releaseData**: number e obrigatorio
+- **genre**: array, texto e obrigatorio
+- **mode**: array, texto e obrigatorio
+- **available**: boolean e obrigatorio
+- **description**: texto e opcional
+- **idConsole**: id do console e obrigatorio
+  
+<br>
 
-***
-### Exercícios 
-* [Exercicio para sala](https://github.com/mflilian/repo-example/tree/main/exercicios/para-sala)
-* [Exercicio para casa](https://github.com/mflilian/repo-example/tree/main/exercicios/para-casa)
+### 🖨️ API deve retornar seguinte JSON:
+```javascript
+[
+  {
+    "_id": new ObjectId( "62b0df5fa494af18319efae7"),
+    "name": "God of War",
+    "developer": "Santa Monica Studio",
+    "releaseData": 2018,
+    "genre": ["Action-adventure","hack and slash"],
+    "mode": ["Single-player"],
+    "available": true,
+    "description": "While the first seven games were loosely based on Greek mythology...",
+    "console": new ObjectId(62b0c3860a5912f473d73c0f)"
+     __v: 0
+  },
+  {
+    "_id:" new ObjectId("62b0e168a494af18319efaea"),
+    "name": "Halo: The Master Chief Collection",
+    "developer": "343 Industries",
+    "releaseData": 2014,
+    "genre": ["First-person","shooter"],
+    "mode": ["Single-player","multiplayer"],
+    "available": true,
+    "description": "Is a compilation of first-person shooter video games...",
+    "console": new ObjectId("62b0c4860a5912f473d73c11"),
+  },
+  {
+    "_id:" new ObjectId("62b0e20da494af18319efaed"),
+    "name": "Pokémon Legends: Arceus",
+    "developer": "Game Freak",
+    "releaseData": 2022,
+    "genre": ["Action role-playing"],
+    "mode": ["Single-player"],
+    "available": true,
+    "description": "Arceus is a 2022 action role-playing game developed by Game Freak...",
+    "console": new ObjectId("62b0c6110a5912f473d73c13"),
+  }
+]
+````
 
-### Material da aula 
+## 📖 Referências
+- https://www.gartner.com/en/information-technology/glossary/object-data-model
+- https://developer.mozilla.org/pt-BR/docs/Learn/Server-side/Express_Nodejs/mongoose
+- https://docs.mongodb.com/
+- https://docs.mongodb.com/manual/crud/
+- https://docs.atlas.mongodb.com/tutorial/create-new-cluster/
+- https://studio3t.com/academy/topic/mongodb-vs-sql-concepts/
+- https://mongoosejs.com/docs/index.html
 
-### Links Úteis
-- [Lorem Ipsum](https://www.lipsum.com/feed/html)
-- [Lorem Ipsum](https://www.lipsum.com/feed/html)
-- [Lorem Ipsum](https://www.lipsum.com/feed/html)
-- [Lorem Ipsum](https://www.lipsum.com/feed/html)
+### 🎥 Videos de apoio
 
+- [Resumo Mongodb - Codigo Fonte TV](https://www.youtube.com/watch?v=4dTI1mVLX3I)
+- [nodeJs Express Mongo - Api rest full Turitorial](https://www.youtube.com/watch?v=K5QaTfE5ylk)
+- [O que é banco de dados? - Curso em Video](https://www.youtube.com/watch?v=Ofktsne-utM)
 
+##  🎓 Para Casa
+
+Oie maravilhosas, vamos de tarefinha: 
+* Termine o codigo, caso tenha faltado alguma informação;
+* Crie uma rota **GET** que encontre um jogo usando como parametro  *name* (crie a logica na pasta controller);
+* Crie uma rota **GET** que encontre um console usando como parametro *available* (crie a logica na pasta controller);
+* Cadastre no seu banco de dados um novo jogo e/ou um novo console (a sua escolha), tire um print da tela e adicione essa imagem no seu **README.md** isso servirá como comprovante pessoal de que todo seu codigo esta funcionando. 
+* Opicional (não conta como avaliação): Crie uma **rota GET** para *genre* em jogos e uma **rota GET** para *developer* em consoles.
+
+##  Minhas redes sociais
+ - [LINKEDIN](https://www.linkedin.com/in/gaia-maria/)
+ - [GITHUB](https://github.com/Gaia-Maria)
+<br>
+<br>
+<p align="center"> 👾 FIM DO ALGORITMO 👾  </p>
 <p align="center">
-Desenvolvido com :purple_heart:  
+  <img src="https://media3.giphy.com/media/JUSwkiO1Eh5K43ruN0/giphy.gif" width= "400" height="200"/>
 </p>
+<br>
 
