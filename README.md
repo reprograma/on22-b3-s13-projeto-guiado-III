@@ -74,7 +74,7 @@ Turma Online
 - **_id**: autogerado e obrigatório
 - **name**: texto e obrigatório (*unico*)
 - **developer**: texto e obrigatorio
-- **releaseData**: number e obrigatorio
+- **releaseDate**: number e obrigatorio
 - **display**: array, texto e obrigatorio
 - **storageCapacities**: array, texto e obrigatorio
 - **numberOfPlayers**: array numerico e obrigatorio
@@ -90,10 +90,10 @@ Turma Online
     "_id":new ObjectId("62b0c3860a5912f473d73c0f"),
     "name":"PlayStation 4",
     "developer":"Sony Computer Entertainment",
-    "releaseData":{"2013"},
+    "releaseDate":2013,
     "display":["480p","720p","1080p","4K"],
     "storageCapacities":["500GB","1TB","2TB"],
-    "numberOfPlayers":[{"1","2","3","4"}],
+    "numberOfPlayers":["1","2","3","4"],
     "available":true,
     "description":"The PlayStation 4 (PS4) is a home video game console developed by Sony Computer..."
      __v: 0
@@ -102,7 +102,7 @@ Turma Online
     "_id":new ObjectId("62b0c4860a5912f473d73c11"),
     "name":"Xbox One",
     "developer":"Microsoft",
-    "releaseData":{"2013"},
+    "releaseDate":2013,
     "display":["720p","1080p","1440p","4K"],
     "storageCapacities":["500GB","1TB"],
     "numberOfPlayers":["1","2","3","4"],
@@ -114,7 +114,7 @@ Turma Online
     "_id":new ObjectId("62b0c6110a5912f473d73c13"),
     "name":"Nintendo Switch",
     "developer":"Nintendo PTD",
-    "releaseData":{"2017"},
+    "releaseDate": 2017,
     "display":["480p","720p","1080p"],
     "storageCapacities":["34GB","64TB"],
     "numberOfPlayers":["1","2"],
@@ -132,7 +132,7 @@ Turma Online
 - **_id**: autogerado e obrigatório
 - **name**: texto e obrigatório (*unico*)
 - **developer**: texto e obrigatorio
-- **releaseData**: number e obrigatorio
+- **releaseDate**: number e obrigatorio
 - **genre**: array, texto e obrigatorio
 - **mode**: array, texto e obrigatorio
 - **available**: boolean e obrigatorio
@@ -148,7 +148,7 @@ Turma Online
     "_id": new ObjectId( "62b0df5fa494af18319efae7"),
     "name": "God of War",
     "developer": "Santa Monica Studio",
-    "releaseData": 2018,
+    "releaseDate": 2018,
     "genre": ["Action-adventure","hack and slash"],
     "mode": ["Single-player"],
     "available": true,
@@ -160,7 +160,7 @@ Turma Online
     "_id:" new ObjectId("62b0e168a494af18319efaea"),
     "name": "Halo: The Master Chief Collection",
     "developer": "343 Industries",
-    "releaseData": 2014,
+    "releaseDate": 2014,
     "genre": ["First-person","shooter"],
     "mode": ["Single-player","multiplayer"],
     "available": true,
@@ -171,7 +171,7 @@ Turma Online
     "_id:" new ObjectId("62b0e20da494af18319efaed"),
     "name": "Pokémon Legends: Arceus",
     "developer": "Game Freak",
-    "releaseData": 2022,
+    "releaseDate": 2022,
     "genre": ["Action role-playing"],
     "mode": ["Single-player"],
     "available": true,
