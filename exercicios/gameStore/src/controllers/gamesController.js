@@ -1,2 +1,2 @@
-const GamesModel = require("../models/gamesModel");
-const ConsolesModel = require("../models/consolesModel");
+const gamesModel = require("../models/gamesModel");
+const consolesModel = require("../models/consolesModel");
