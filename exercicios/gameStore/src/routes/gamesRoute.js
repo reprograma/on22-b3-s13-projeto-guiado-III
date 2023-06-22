@@ -1,16 +1,15 @@
-const controller = require('../controllers/gamesController');
 const express = require('express');
-
 const router = express.Router();
+const gamesController = require('../controllers/gamesController');
 
-router.get("/all", controller.findAllGames);
+router.route('/add').post(gamesController.addNewGame);
 
-router.get("/:id", controller.findGameById);
+router
+  .route('/:id')
+  .get(gamesController.findGameById)
+  .patch(gamesController.updateGame)
+  .delete(gamesController.deleteGame);
 
-router.post("/add", controller.addNewGame);
+router.route('/all').get(gamesController.findAllGames);
 
-router.patch("/:id", controller.updateGame);
-
-router.delete("/:id", controller.deleteGame);
-
-module.exports = router
+module.exports = router;

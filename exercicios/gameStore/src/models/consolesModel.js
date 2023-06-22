@@ -1,11 +1,7 @@
-const mongoose = require("mongoose");
+const mongoose = require('mongoose');
 
-const consoleSchema = mongoose.Schema(
+const consoleSchema = new mongoose.Schema(
   {
-    _id: {
-      type: mongoose.Schema.Types.ObjectId,
-      default: () => new mongoose.Types.ObjectId(),
-    },
     name: {
       type: String,
       required: true,
@@ -37,9 +33,8 @@ const consoleSchema = mongoose.Schema(
     },
     description: String,
   },
-  { timestamp: true }
+  { timestamps: true }
 );
 
-const Model = mongoose.model("Console", consoleSchema);
-
-module.exports = Model;
+const Console = mongoose.model('Console', consoleSchema);
+module.exports = Console;

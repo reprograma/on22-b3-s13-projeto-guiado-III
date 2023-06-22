@@ -1,16 +1,15 @@
-const controller = require("../controllers/consolesController");
-const express = require("express");
-
+const express = require('express');
 const router = express.Router();
+const consolesController = require('../controllers/consolesController');
 
-router.get("/all", controller.findAllConsoles);
+router.route('/all').get(consolesController.findAllConsoles);
 
-router.get("/:id", controller.findConsoleById);
+router
+  .route('/:id')
+  .get(consolesController.findConsoleById)
+  .patch(consolesController.updateConsole)
+  .delete(consolesController.deleteConsole);
 
-router.post("/add", controller.addNewConsole);
-
-router.patch("/:id", controller.updateConsole);
-
-router.delete("/:id", controller.deleteConsole);
+router.route('/add').post(consolesController.addNewConsole);
 
 module.exports = router;
