@@ -41,7 +41,7 @@ const gameSchema = mongoose.Schema(
           type: String,
           minLength: 0,
           maxLength: 500,
-          defult: "Não informado",
+          default: "Não informado",
         },
 
       console: {
