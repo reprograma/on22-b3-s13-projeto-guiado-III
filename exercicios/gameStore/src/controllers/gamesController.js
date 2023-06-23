@@ -2,6 +2,7 @@ const GamesModel = require("../models/gamesModel");
 const ConsolesModel = require("../models/consolesModel");
 
 
+
 const findAllGames = async (req, res) => {
     try {
       const allGames = await GamesModel.find().populate("console");
@@ -29,6 +30,7 @@ const findGameById = async (req, res) => {
       message: error.message,
     });
   }
+
 };
 
 const addNewGame = async (req, res) => {
@@ -50,9 +52,11 @@ const addNewGame = async (req, res) => {
       });
     }
 
+
     const findConsole = await ConsolesModel.findById(consoleId);
 
     if (!findConsole) {
+
       return res.status(404).json({
         message: "Console not found.",
       });
@@ -60,6 +64,7 @@ const addNewGame = async (req, res) => {
 
     const newGame = new GamesModel({
       console: consoleId, //referencia o REF
+
       name,
       developer,
       releaseDate,
@@ -68,6 +73,7 @@ const addNewGame = async (req, res) => {
       available,
       description,
     });
+
 
     const savedGame = await newGame.save();
     res.status(200).json({
@@ -80,7 +86,7 @@ const addNewGame = async (req, res) => {
       message: error.massage,
     });
   }
-};
+
 
 const updateGame = async (req, res) => {
   try {
@@ -113,6 +119,8 @@ const updateGame = async (req, res) => {
       }
     }
 
+
+
     findGame.name = name || findGame.name;
     findGame.developer = developer || findGame.developer;
     findGame.releaseDate = releaseDate || findGame.releaseDate;
@@ -123,6 +131,7 @@ const updateGame = async (req, res) => {
     findGame.console = consoleId || findGame.console;
 
     const savedGame = await findGame.save();
+
     res.status(200).json({
       massage: "Game successfully updated!!",
       savedGame,
@@ -132,12 +141,14 @@ const updateGame = async (req, res) => {
       message: error.message,
     });
   }
+
 };
 
 const deleteGame = async (req, res) => {
   try {
     const { id } = req.params;
     const findGames = await GamesModel.findByIdAndDelete(id);
+
 
     if (findGames == nul) {
       return res.status(404).json({
@@ -152,6 +163,7 @@ const deleteGame = async (req, res) => {
         message: error.message
     })
   }
+ main
 };
 
 module.exports = {
@@ -160,4 +172,7 @@ module.exports = {
   addNewGame,
   updateGame,
   deleteGame,
+
 };
+
+
