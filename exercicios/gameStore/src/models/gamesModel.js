@@ -44,6 +44,6 @@ const gameSchema = mongoose.Schema({
   timestamp: true
 });
 
-const Model = mongoose.model('Game', gameSchema);
+const Model = mongoose.model("game", gameSchema);
 
 module.exports = Model;

@@ -109,10 +109,60 @@ const deleteConsole = async (req, res) => {
         })
     }
 }
+
+//Atividades para casa
+//rota GET que encontre um console usando como parametro available 
+const findAvailableConsole = async (req, res) => {
+
+    try {
+        const {
+            available
+        } = req.query
+        const findConsole = await consolesModel.find({
+            available
+        })
+
+        if (findConsole.lenght === 0) {
+            res.status(404).json(`Console available ${available} not found!`)
+        }
+        res.status(200).json(findConsole)
+    } catch (error) {
+        console.error(error)
+        res.status(500).json({
+            message: error.message
+        })
+    }
+
+}
+
+//rota GET para developer em consoles
+const findConsoleByDeveloper = async (req, res) => {
+    try {
+        const {
+            developer
+        } = req.query;
+        const findConsole = await consolesModel.find({
+            developer
+        })
+
+        if (findConsole.lenght === 0) {
+            res.status(404).json(`Console with developer ${developer} not found!`)
+        }
+        res.status(200).json(findConsole)
+    } catch (error) {
+        res.status(500).json({
+            message: error.message
+        })
+    }
+}
+
+
 module.exports = {
     findAllConsoles,
     findConsoleById,
     addNewConsole,
     updateConsole,
-    deleteConsole
+    deleteConsole,
+    findAvailableConsole,
+    findConsoleByDeveloper
 }

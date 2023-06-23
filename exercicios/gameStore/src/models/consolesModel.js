@@ -39,4 +39,4 @@ const consoleSchema = mongoose.Schema({
 });
 
 const Model = mongoose.model("console", consoleSchema);
-module.exports = Model
+module.exports = Model;
