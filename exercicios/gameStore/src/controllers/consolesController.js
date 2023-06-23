@@ -2,34 +2,20 @@ const consolesModel = require('../models/consolesModel');
 
 const addNewConsole = async (req, res) => {
   try {
-    const {
-      name,
-      developer,
-      releaseDate,
-      display,
-      storageCapacities,
-      numberOfPlayers,
-      available,
-      description,
-    } = req.body;
-    const newConsole = new consolesModel({
-      name,
-      developer,
-      releaseDate,
-      display,
-      storageCapacities,
-      numberOfPlayers,
-      available,
-      description,
-    });
+    const consoleData = req.body;
+    const newConsole = new consolesModel(consoleData);
     const savedConsole = await newConsole.save();
-    res.status(201).json({
-      message: 'Your new console was saved successfully.',
-      savedConsole,
-    });
+    res
+      .status(201)
+      .json({
+        message: 'Your new console was saved successfully.',
+        savedConsole,
+      });
   } catch (error) {
     console.error('Error adding new console:', error);
-    res.status(500).json(error.message);
+    res
+      .status(500)
+      .json({ message: error.message });
   }
 };
 
@@ -39,9 +25,7 @@ const findAllConsoles = async (req, res) => {
     res.status(200).json(allConsoles);
   } catch (error) {
     console.error('Error finding consoles:', error);
-    res.status(500).json({
-      message: error.message,
-    });
+    res.status(500).json({ message: error.message });
   }
 };
 
@@ -65,16 +49,20 @@ const findConsoleById = async (req, res) => {
 const updateConsole = async (req, res) => {
   try {
     const consoleData = req.body;
-    const updatedConsole = await consolesModel.findByIdAndUpdate(
-      req.params.id,
-      consoleData,
-      { new: true }
-    );
+    const { id } = req.params;
+    const updatedConsole = await consolesModel
+      .findByIdAndUpdate(
+        id,
+        consoleData,
+        { new: true }
+      );
+
     if (!updatedConsole) {
       return res.status(404).json({
         message: 'Console not found.',
       });
     }
+
     res.status(200).json({
       message: 'Console updated and saved.',
       updatedConsole,

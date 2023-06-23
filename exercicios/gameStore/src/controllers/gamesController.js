@@ -53,8 +53,7 @@ const findGameById = async (req, res) => {
     );
     if (!findGame) {
       return res
-        .status(404)
-        .json({ message: 'Game not available' });
+        .status(404).json({ message: 'Game not available' });
     }
     res.status(200).json(findGame);
   } catch (error) {
