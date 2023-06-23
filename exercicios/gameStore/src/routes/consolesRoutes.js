@@ -4,16 +4,16 @@ const router = express.Router();
 
 router.get('/all', findAllConsoles); //ok
 
-router.get('/console/available', findAvailable);
+router.get('/available', findAvailable); //ok
 
-router.get('/console/devs', findByDev);
+router.get('/devs', findByDev); //ok
 
 router.route('/console/:id')
-    .get(findConsoleById)
-    .patch(updateConsole)
-    .delete(deleteConsole)
+    .get(findConsoleById) //ok
+    .patch(updateConsole) //ok
+    .delete(deleteConsole) //ok
 
-router.post('/new', addNewConsole);
+router.post('/new', addNewConsole); //ok
 
 
 module.exports = router;
