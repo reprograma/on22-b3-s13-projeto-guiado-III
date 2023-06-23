@@ -1,26 +1,36 @@
 {
   "name": "gamestore",
   "version": "1.0.0",
-  "description": "- Explicação do exercício: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Aliquam leo nibh, tempus sed rhoncus et, ultrices vitae orci.\r Donec erat mauris, laoreet in tortor vel, eleifend suscipit nibh. Lorem ipsum dolor sit amet, consectetur adipiscing elit.\r Aliquam leo nibh, tempus sed rhoncus et, ultrices vitae orci. Donec erat mauris, laoreet in tortor vel, eleifend suscipit nibh. \r ---",
+  "description": "not given",
   "main": "server.js",
   "scripts": {
     "test": "nodemon server.js",
-    "start": "nodemon server.js"
+    "start": "node server.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nearlyerika/on22-b3-s13-projeto-guiado-III.git"
   },
   "keywords": [
     "node",
-    "db",
-    "mongo",
-    "mongoose",
     "express",
-    "api"],
+    "api",
+    "db",
+    "database",
+    "mongodb",
+    "mongoose"
+  ],
   "author": "nearlyerika",
   "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/nearlyerika/on22-b3-s13-projeto-guiado-III/issues"
+  },
+  "homepage": "https://github.com/nearlyerika/on22-b3-s13-projeto-guiado-III#readme",
   "dependencies": {
     "cors": "^2.8.5",
-    "dotenv": "^16.3.0",
+    "dotenv": "^16.3.1",
     "express": "^4.18.2",
-    "mongoose": "^7.3.0"
+    "mongoose": "^7.3.1"
   },
   "devDependencies": {
     "nodemon": "^2.0.22"

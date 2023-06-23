@@ -33,6 +33,18 @@ const addNewConsole = async (req, res) => {
   }
 };
 
+const findAllConsoles = async (req, res) => {
+  try {
+    const allConsoles = await consolesModel.find();
+    res.status(200).json(allConsoles);
+  } catch (error) {
+    console.error('Error finding consoles:', error);
+    res.status(500).json({
+      message: error.message,
+    });
+  }
+};
+
 const findConsoleById = async (req, res) => {
   try {
     const findConsole = await consolesModel.findById(req.params.id);
@@ -44,18 +56,6 @@ const findConsoleById = async (req, res) => {
     res.status(200).json(findConsole);
   } catch (error) {
     console.error('Error finding console by ID:', error);
-    res.status(500).json({
-      message: error.message,
-    });
-  }
-};
-
-const findAllConsoles = async (req, res) => {
-  try {
-    const allConsoles = await consolesModel.find();
-    res.status(200).json(allConsoles);
-  } catch (error) {
-    console.error('Error finding consoles:', error);
     res.status(500).json({
       message: error.message,
     });

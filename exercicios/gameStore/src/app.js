@@ -12,4 +12,6 @@ app.use(cors());
 mongoose.connect();
 
 app.use("/gamestore/consoles",consolesRoutes);
-app.use("/gamestore/games",gamesRoutes);
+app.use("/gamestore/games", gamesRoutes);
+
+module.exports = app

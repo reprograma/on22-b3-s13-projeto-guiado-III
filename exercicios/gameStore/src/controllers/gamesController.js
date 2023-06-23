@@ -1,4 +1,4 @@
-const Game = require('../models/gameModel');
+const Game = require('../models/gamesModel');
 
 const addNewGame = async (req, res) => {
   try {
@@ -36,6 +36,16 @@ const addNewGame = async (req, res) => {
   }
 };
 
+const findAllGames = async (req, res) => {
+try {
+  const allGames = await Game.find().populate('idConsole', 'name');
+    res.status(200).json(allGames);
+  } catch (error) {
+    console.error(error);
+    res.status(500).json({ message: error.message });
+  }
+};
+  
 const findGameById = async (req, res) => {
   try {
     const { id } = req.params;
@@ -50,16 +60,6 @@ const findGameById = async (req, res) => {
     }
   };
 
-const findAllGames = async (req, res) => {
-try {
-  const allGames = await Game.find().populate('idConsole', 'name');
-    res.status(200).json(allGames);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: error.message });
-  }
-};
-  
 const updateGame = async (req, res) => {
   try {
     const { id } = req.params;
