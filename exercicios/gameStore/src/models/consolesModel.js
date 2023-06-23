@@ -38,6 +38,7 @@ const consoleSchema = mongoose.Schema(
       required: true,
     },
 
+
     available: {
       type: Boolean,
       required: true,
@@ -48,6 +49,7 @@ const consoleSchema = mongoose.Schema(
   },
 
   { timestamp: true }
+
 
 );
 

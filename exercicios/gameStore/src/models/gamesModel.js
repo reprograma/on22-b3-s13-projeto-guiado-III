@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
 const gameSchema = mongoose.Schema(
+
   {
     _id: {
       type: mongoose.Schema.Types.ObjectId,
@@ -58,3 +59,4 @@ const gameSchema = mongoose.Schema(
 const Model = mongoose.model("Game", gameSchema);
 
 module.exports = Model;
+

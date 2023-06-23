@@ -1,6 +1,7 @@
 const GamesModel = require("../models/gamesModel");
 const ConsolesModel = require("../models/consolesModel");
 
+
 const findAllGames = async (req, res) => {
     try {
       const allGames = await GamesModel.find().populate("console");
