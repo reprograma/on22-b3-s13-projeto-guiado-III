@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+
 
 const GameSchema = mongoose.Schema(
   {
@@ -49,3 +49,4 @@ const GameSchema = mongoose.Schema(
 const Model = mongoose.model("Game", GameSchema);
 
 module.exports = Model;
+

@@ -1,4 +1,4 @@
-const mongoose = require("mongoose");
+
 
 const consoleSchema = mongoose.Schema(
   {
@@ -43,3 +43,4 @@ const consoleSchema = mongoose.Schema(
 const Model = mongoose.model("Console", consoleSchema);
 
 module.exports = Model;
+
