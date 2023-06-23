@@ -11,6 +11,6 @@ router.post("/add", controller.addNewConsole);
 
 router.patch("/:id", controller.updateConsole);
 
-router.delete("/:id", controller.deleteConsole);
+router.delete("/:id", controller.deleteById);
 
-module.exports = router;
+ module.exports = router;

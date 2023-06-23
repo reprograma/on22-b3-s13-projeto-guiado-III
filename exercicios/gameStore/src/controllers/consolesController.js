@@ -1,103 +1,107 @@
-const ConsolesModel = require("../models/consolesModel");
+const consolesModel = require("../models/consolesModel");
 
-const findAllConsoles = async (req, res) => {
+const findAllConsoles = async (_, response) => {
   try {
-    const allConsoles = await ConsolesModel.find();
-    res.status(200).json(allConsoles);
-  } catch {
-    console.log(error);
-    res.status(500).json({ message: error.message });
-  };
-};
+    const allConsoles = await consolesModel.find();
+    response.status(200).json(allConsoles)
+} catch (error) {
+    console.log(error)
+    response.status(500).json({
+        message: error.message
+    })
+}
+}
 
-const findConsoleById = async (req, res) => {
+const findConsoleById = async (request, response) => {
   try {
-    const findConsole = await ConsolesModel.findById(req.params.id);
-    res.status(200).json(findConsole);
-  } catch (error) {
-    console.error(error);
-    res.status(500).json({ message: error.message });
-  };
-};
-
-const addNewConsole = async (req, res) => {
-  try {
-    const {
-      name,
-      developer,
-      releaseDate,
-      display,
-      storageCapacities,
-      numberOfPlayers,
-      available,
-      description,
-    } = req.body;
-    const newConsole = new ConsolesModel({
-      name,
-      developer,
-      releaseDate,
-      display,
-      storageCapacities,
-      numberOfPlayers,
-      available,
-      description,
-    });
-
-    const savedConsole = await newConsole.save();
-
-    res.status(201).json({ message: "New console successfully added", savedConsole });
-  } catch (error) {
-    console.error(error);
-    res.status(500).json(error.message);
-  };
-};
-
-const updateConsole = async (req, res) => {
+    const findConsole = await consolesModel.findById(request.params.id)
+    response.status(200).json(findConsole)
+} catch (error) {
+    console.error(error)
+    response.status(500).json({
+        message: error.message
+    })
+}
+}
+const addNewConsole = async(request, response) => {
   try {
     const {
-      name,
-      developer,
-      releaseDate,
-      display,
-      storageCapacities,
-      numberOfPlayers,
-      available,
-      description,
-    } = req.body;
-    const updateConsole = await ConsolesModel.findByIdAndUpdate(req.params.id, {
-      name,
-      developer,
-      releaseDate,
-      display,
-      storageCapacities,
-      numberOfPlayers,
-      available,
-      description,
-    });
+      name, 
+      developer, 
+      releaseDate, 
+      display, 
+      storageCapacities, 
+      numberOfPlayers, 
+      available, 
+      description 
+    } = request.body
 
-    res.status(200).json({ message: "Console successfully updated", updateConsole });
-  } catch {
-    console.error(error);
-    res.status(500).json({ message: error.message });
-  };
-};
+      const newConsole = new consolesModel ({
+        name, 
+        developer, 
+        releaseDate, 
+        display, 
+        storageCapacities, 
+        numberOfPlayers,
+        available, 
+        description })
+      const savedConsole = await newConsole.save()
+      response.status(201).json({message:"Seu novo console foi cadastrado com sucesso", id: savedConsole.id})
+  } catch (error) {
+    console.error(error)
+    response.status(500).json(error.message)
+  }
+}
 
-const deleteConsole = async (req, res) => {
+const updateConsole = async (request, response) => {
+  try { 
+    const {
+        name, 
+        developer, 
+        releaseDate, 
+        display, 
+        storageCapacities, 
+        numberOfPlayers,
+        available, 
+        description 
+    } = request.body
+    const updateConsole = await consolesModel.findByIdAndUpdate(request.params.id, {
+      name, 
+        developer, 
+        releaseDate, 
+        display, 
+        storageCapacities, 
+        numberOfPlayers,
+        available, 
+        description 
+    })
+      response.status(200).json({
+        message: "Console atualizado", updateConsole
+      })  
+  } catch (error) {
+    console.error(error)
+    response.status(500).json({
+      message: "Não foi possível atualizar seu console"
+    })
+  }
+}
+
+const deleteById = async(request, response ) => { 
   try {
-    const { id } = req.params;
-    const deleteConsole = await ConsolesModel.findByIdAndDelete(id);
-    const message = `Console ${deleteConsole.name} was successfully deleted`;
-    res.status(200).json({ message });
-  } catch (error){
-    console.error(error);
-    res.status(500).json({ message: error.message });
-  };
-};
+    const {id} = request.params
+    const console = await consolesModel.findByIdAndDelete(id)
+    const message = `console ${console.name} foi deletado.`
+    response.status(200).json({message})
+  } catch (error) {
+    console.error(error)
+    response.status(500).json({message: error.message})
+  }
+}
 
 module.exports = {
-  findAllConsoles,
-  findConsoleById,
-  addNewConsole,
-  updateConsole,
-  deleteConsole,
-};
+  findAllConsoles, 
+  findConsoleById, 
+  addNewConsole, 
+  updateConsole, 
+  deleteById
+}
