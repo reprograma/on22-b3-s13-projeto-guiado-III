@@ -11,6 +11,6 @@ router.post("/add", controller.addNewGame);
 
 router.patch("/:id", controller.updateGame);
 
-router.delete("/:id", controller.deleteGame);
+router.delete("/:id", controller.deleteGame); 
 
 module.exports = router
