@@ -1,7 +1,7 @@
 const controller = require("../controllers/consolesController");
 const express = require("express");
 
-const router = express.Router();
+const router = express.Router(); 
 
 router.get("/all", controller.findAllConsoles);
 
@@ -11,6 +11,9 @@ router.post("/add", controller.addNewConsole);
 
 router.patch("/:id", controller.updateConsole);
 
-router.delete("/:id", controller.deleteConsole);
+router.delete("/:id", controller.deleteConsole); 
+
+router.get("/available", controller.getByAvailable);
+
 
 module.exports = router;
