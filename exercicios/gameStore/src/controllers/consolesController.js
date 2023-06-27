@@ -4,10 +4,12 @@ const findAllConsoles = async (req, res) => {
   try {
     const allConsoles = await ConsolesModel.find();
     res.status(200).json(allConsoles);
+
   } catch {
     console.log(error);
     res.status(500).json({ message: error.message });
   };
+
 };
 
 const findConsoleById = async (req, res) => {
@@ -17,7 +19,8 @@ const findConsoleById = async (req, res) => {
   } catch (error) {
     console.error(error);
     res.status(500).json({ message: error.message });
-  };
+  }
+
 };
 
 const addNewConsole = async (req, res) => {
@@ -32,6 +35,7 @@ const addNewConsole = async (req, res) => {
       available,
       description,
     } = req.body;
+
     const newConsole = new ConsolesModel({
       name,
       developer,
@@ -45,11 +49,15 @@ const addNewConsole = async (req, res) => {
 
     const savedConsole = await newConsole.save();
 
-    res.status(201).json({ message: "New console successfully added", savedConsole });
+    res.status(201).json({
+      message: "New console successfully added",
+      savedConsole,
+    });
   } catch (error) {
     console.error(error);
     res.status(500).json(error.message);
-  };
+  }
+
 };
 
 const updateConsole = async (req, res) => {
@@ -64,6 +72,7 @@ const updateConsole = async (req, res) => {
       available,
       description,
     } = req.body;
+
     const updateConsole = await ConsolesModel.findByIdAndUpdate(req.params.id, {
       name,
       developer,
@@ -76,22 +85,25 @@ const updateConsole = async (req, res) => {
     });
 
     res.status(200).json({ message: "Console successfully updated", updateConsole });
-  } catch {
+  } catch (error) {
     console.error(error);
-    res.status(500).json({ message: error.message });
-  };
+    res.status(500).json({ message: "Not updated" });
+  }
+
 };
 
 const deleteConsole = async (req, res) => {
   try {
     const { id } = req.params;
     const deleteConsole = await ConsolesModel.findByIdAndDelete(id);
-    const message = `Console ${deleteConsole.name} was successfully deleted`;
+
+    const message = `Console ${deleteConsole.name} deleted`;
     res.status(200).json({ message });
-  } catch (error){
+  } catch (error) {
     console.error(error);
     res.status(500).json({ message: error.message });
-  };
+  }
+
 };
 
 module.exports = {

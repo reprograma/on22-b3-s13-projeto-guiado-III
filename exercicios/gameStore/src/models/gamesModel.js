@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 
-const GameSchema = mongoose.Schema(
+const gameSchema = mongoose.Schema(
+
   {
     _id: {
       type: mongoose.Schema.Types.ObjectId,
@@ -11,41 +12,51 @@ const GameSchema = mongoose.Schema(
       required: true,
       unique: true,
     },
+
     developer: {
       type: String,
       required: true,
     },
+
     releaseDate: {
       type: Number,
       required: true,
     },
+
     genre: {
       type: [String],
       required: true,
     },
+
     mode: {
       type: [String],
       required: true,
     },
+
     available: {
       type: Boolean,
       required: true,
     },
+
     description: {
-        type: String,
+        type: String, 
         minLength: 0,
         maxLength: 500,
-        deafult: "Não informado",
-      },
-    console: {
-      type: mongoose.Schema.Types.ObjectId,
-      required: true,
-      ref: "Console",
+        default: "Não informado"
     },
+
+    console: {
+        type: mongoose.Schema.Types.ObjectId,
+        required: true,
+        ref: "Console"
+    }
   },
+
   { timestamp: true }
+
 );
 
-const Model = mongoose.model("Game", GameSchema);
+const Model = mongoose.model("Game", gameSchema);
 
 module.exports = Model;
+
