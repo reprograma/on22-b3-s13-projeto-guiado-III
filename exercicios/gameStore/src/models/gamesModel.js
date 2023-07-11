@@ -35,7 +35,7 @@ const GameSchema = mongoose.Schema(
         type: String,
         minLength: 0,
         maxLength: 500,
-        deafult: "Não informado",
+        deafult: "Não informado!",
       },
     console: {
       type: mongoose.Schema.Types.ObjectId,
