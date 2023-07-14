@@ -75,7 +75,7 @@ const updateConsole = async (req, res) => {
       description,
     });
 
-    res.status(200).json({ message: "Console successfully updated", updateConsole });
+    res.status(200).json({ message: "console com sucesso", updateConsole });
   } catch {
     console.error(error);
     res.status(500).json({ message: error.message });
