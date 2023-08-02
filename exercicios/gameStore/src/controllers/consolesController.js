@@ -86,13 +86,19 @@ const deleteConsole = async (req, res) => {
   try {
     const { id } = req.params;
     const deleteConsole = await ConsolesModel.findByIdAndDelete(id);
+
+    if (deleteConsole === null) {
+      return res.status(404).json({ message: `Console with id ${id} not found` });
+    }
+
     const message = `Console ${deleteConsole.name} was successfully deleted`;
     res.status(200).json({ message });
-  } catch (error){
+  } catch (error) {
     console.error(error);
     res.status(500).json({ message: error.message });
-  };
+  }
 };
+
 
 module.exports = {
   findAllConsoles,
